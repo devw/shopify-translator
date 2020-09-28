@@ -14,7 +14,6 @@ const filterMetaFields = (translatables, metafieldIds) => {
 
 export const translatableField = async (first, cursor) => {
     const query = translatableQuery(first, cursor, "PRODUCT");
-    console.log(query);
     const { translatableResources } = await shopify.graphql(query);
     const node = translatableResources.edges[0].node;
     return {
@@ -25,7 +24,6 @@ export const translatableField = async (first, cursor) => {
 
 export const translatableMetaField = async (first, cursor) => {
     const query = translatableQuery(first, cursor, "METAFIELD");
-    console.log(query);
     const { translatableResources } = await shopify.graphql(query);
     const translatables = translatableResources.edges;
     const metafieldIds = await getMetaField(1);

@@ -2,6 +2,7 @@ import { translationMutation } from "./translation.mutation.mjs";
 import { shopify } from "../shopify.mjs";
 
 const fix_key = (key) => key.replace(/\bdigest/, "translatableContentDigest");
+
 const objectAdapted = (e) => {
     e.locale = "es";
     e.value = "es-translation: " + e.value.toUpperCase(); // translation
@@ -24,7 +25,7 @@ const adaptMetafields = (translatables) =>
         ],
     }));
 
-export const translateFields = async ({ id, contents }) => {
+export const translateField = async ({ id, contents }) => {
     const mutation = translationMutation();
     const variables = {
         id: id,

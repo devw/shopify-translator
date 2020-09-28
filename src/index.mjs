@@ -4,14 +4,13 @@ import {
 } from "./translatables/translatable.mjs";
 
 import {
-    translateFields,
+    translateField,
     translateMetaField,
-} from "./translation/translation.create.mjs";
+} from "./translation/translation.mjs";
 
 const translateFields = async () => {
     const translatable = await translatableField(2);
-    const translations = await translateFields(translatable);
-    console.log(translatable);
+    translateField(translatable);
 };
 
 const translateMetaFields = async () => {
@@ -20,7 +19,7 @@ const translateMetaFields = async () => {
 };
 
 const main = async () => {
-    // translateFields();
+    translateFields();
     translateMetaFields();
 };
 
