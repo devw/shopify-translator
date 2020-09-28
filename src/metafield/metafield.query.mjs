@@ -1,3 +1,5 @@
+import { config } from "../../config.mjs";
+
 export const MetafieldQuery = (first, after) => `
       query FetchMetafields {
         products(first: ${first}, sortKey:UPDATED_AT, reverse: true ${
@@ -7,7 +9,9 @@ export const MetafieldQuery = (first, after) => `
             node {
               id
               title
-              metafields(first: 30, namespace: "back") {
+              metafields(first: 30, namespace: "${
+                  config.metafield_namespace
+              }") {
                 edges {
                   node {
                     id

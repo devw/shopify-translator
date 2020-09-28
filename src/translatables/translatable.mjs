@@ -1,8 +1,9 @@
 import { shopify } from "../shopify.mjs";
 import { translatableQuery } from "./translatable.query.mjs";
 import { getMetaField } from "../metafield/metafield.mjs";
+import { config } from "../../config.mjs";
 
-const translatableFilter = (e) => ["title", "body_html"].indexOf(e.key) > -1;
+const translatableFilter = (e) => config.fields.indexOf(e.key) > -1;
 
 const contents = (node) => node.translatableContent.filter(translatableFilter);
 
