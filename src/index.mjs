@@ -15,6 +15,7 @@ const translateFields = async () => {
 
 const translateMetaFields = async () => {
     const translatables = await translatableMetaField(40);
+    console.log("translatables", translatables);
     translateMetaField(translatables);
 };
 

@@ -26,16 +26,14 @@ const adaptMetafields = (translatables) =>
     }));
 
 export const translateField = async ({ id, contents }) => {
-    const mutation = translationMutation();
     const variables = {
         id: id,
         translations: contents.map((e) => objectAdapted(e)),
     };
-    console.log(mutation, variables);
 
     shopify
-        .graphql(mutation, variables)
-        .then((_) => console.log("translationCreate OK"))
+        .graphql(translationMutation(), variables)
+        .then((_) => console.log("translation field OK"))
         .catch((err) => console.error("error", err));
 };
 
@@ -43,7 +41,7 @@ export const translateMetaField = async (variables) => {
     adaptMetafields(variables).forEach((variable) =>
         shopify
             .graphql(translationMutation(), variable)
-            .then((_) => console.log("translationCreate OK"))
+            .then((_) => console.log("translation metafield OK"))
             .catch((err) => console.error("error", err))
     );
 };
