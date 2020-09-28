@@ -1,4 +1,4 @@
-import { productsFetch } from "./products/product.mjs";
+import { getMetaField } from "./metafield/metafield.mjs";
 import {
     translatableMetaField,
     translatableField,
@@ -20,7 +20,7 @@ const adaptMetafields = (metafields) =>
             {
                 key: "value",
                 locale: "es",
-                value: "es-sport_5",
+                value: "es-sport_8",
                 translatableContentDigest: o.node.translatableContent[0].digest,
             },
         ],
@@ -33,8 +33,7 @@ const translateFields = async () => {
 };
 
 const translateMetaFields = async () => {
-    const metafields = await productsFetch(1);
-    const metafieldIds = metafields.map((e) => e.node.id);
+    const metafieldIds = await getMetaField(1);
     const translatables = await translatableMetaField(40);
     const translatablesFiltered = filterMetaFields(translatables, metafieldIds);
 
@@ -44,7 +43,7 @@ const translateMetaFields = async () => {
 };
 
 const main = async () => {
-    translateFields();
+    // translateFields();
     translateMetaFields();
 };
 

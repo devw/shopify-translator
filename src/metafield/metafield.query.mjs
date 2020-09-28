@@ -1,9 +1,8 @@
-export const productsQuery = (first, after) => {
-    const query = `
+export const MetafieldQuery = (first, after) => `
       query FetchMetafields {
         products(first: ${first}, sortKey:UPDATED_AT, reverse: true ${
-        after ? `, after:"${after}"` : ""
-    }) {
+    after ? `, after:"${after}"` : ""
+}) {
           edges {
             node {
               id
@@ -24,7 +23,3 @@ export const productsQuery = (first, after) => {
         }
       }
     `;
-    console.log(query);
-
-    return query;
-};
