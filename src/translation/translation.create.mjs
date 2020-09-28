@@ -1,10 +1,10 @@
 import { translationMutation } from "./translation.mutation.mjs";
-import { shopify, graphql } from "../shopify.mjs";
+import { shopify } from "../shopify.mjs";
 
 const fix_key = (key) => key.replace(/\bdigest/, "translatableContentDigest");
 const objectAdapted = (e) => {
     e.locale = "es";
-    e.value = e.value.toUpperCase();
+    e.value = e.value.toUpperCase(); // translation
     return Object.assign(
         {},
         ...Object.keys(e).map((key) => ({ [fix_key(key)]: e[key] }))
@@ -18,9 +18,6 @@ export const translationCreate = async ({ id, contents }) => {
         translations: contents.map((e) => objectAdapted(e)),
     };
     console.log(mutation, variables);
-
-    // const translation = await graphql(mutation, variables);
-    // return translation;
 
     shopify
         .graphql(mutation, variables)
