@@ -1,8 +1,6 @@
-export const translatableQuery = (first, cursor, product_or_metafield) =>
-    `query FetchFieldsOrMetaField {
-        translatableResources(first: ${first}, after:${
-        cursor ? $cursor : null
-    }, resourceType: ${product_or_metafield}) {
+export const translatableQuery = () =>
+    `query FetchFieldsOrMetaField($first: Int, $resourceType: TranslatableResourceType!) {
+        translatableResources(first: $first, resourceType: $resourceType) {
           edges {
             node {
               resourceId

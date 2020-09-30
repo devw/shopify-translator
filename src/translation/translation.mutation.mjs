@@ -1,5 +1,4 @@
-export const translationMutation = () => {
-    const query = `
+export const translationMutation = () => `
     mutation CreateTranslation($id: ID!, $translations: [TranslationInput!]!) {
       translationsRegister(resourceId: $id, translations: $translations) {
         translations {
@@ -11,6 +10,3 @@ export const translationMutation = () => {
       }
     }
 `;
-
-    return query;
-};
